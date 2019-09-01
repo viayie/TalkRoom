@@ -15,11 +15,12 @@ void SIGN_menu(void)
 int signIN()
 {
     char name[10], password[10];
-    printf("\nsign in---->enter your name and password:\n");
+    printf("\nsign in---->enter your name and password:");
     scanf("%s %s", name, password);
     int ret = identity(name, password, "sign in");
-    sleep(3);
-
+    bzero(nowname, sizeof(nowname));
+    strcpy(nowname, name);
+    sleep(1);
     return ret;
 }
 
@@ -30,8 +31,9 @@ int signUP()
     printf("\nsign up---->enter your name and password:");
     scanf("%s %s", name, password);
     int ret = identity(name, password, "sign up");
-    sleep(3);
-
+    bzero(nowname, sizeof(nowname));
+    strcpy(nowname, name);
+    sleep(1);
     return ret;
 }
 
@@ -74,34 +76,13 @@ int identity(char *name, char *password, char *cmd)
 
     /* 判断验证结果 */
     if(strcmp(buf, "-verified-") == 0){//验证成功
-        printf("%s succeed!!!\n", cmd);
+        printf("\n\t\t-%s succeed!!!\n", cmd);
         return 1;
     }
     else{//验证失败
-        printf("%s", buf);
+        printf("\n\t\t%s\n", buf);
         return 0;
     }
-}
-
-/* 连接服务器 */
-int connSERV()
-{
-    sockfd = Socket(AF_INET, SOCK_STREAM, 0);
-
-    struct sockaddr_in servaddr;
-    bzero(&servaddr, sizeof(servaddr));
-    servaddr.sin_family = AF_INET;
-    inet_pton(AF_INET, SERV_IP, &servaddr.sin_addr.s_addr);
-    servaddr.sin_port = htons(SERV_PORT);
-    Connect(sockfd, (struct sockaddr *)&servaddr, sizeof(servaddr));
-
-    return 1;
-}
-
-/* 断开服务器 */
-int disconnSERV()
-{
-    Close(sockfd);
 }
 
 /* 处理登录注册操作 */

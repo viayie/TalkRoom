@@ -1,7 +1,16 @@
 #ifndef __SIGN_H__
 #define __SIGN_H__
 
-#include "includes.h"
+#include <stdio.h>
+#include <string.h>
+#include <cjson/cJSON.h>
+#include <unistd.h>
+
+#include "wrap.h"
+#include "conn.h"
+
+extern int sockfd;
+extern char nowname[20];
 
 /* 登录菜单 */
 void SIGN_menu(void);
@@ -17,11 +26,5 @@ int signUP();
 
 /* 处理登录注册操作 */
 int SIGN(void);
-
-/* 连接服务器 */
-int connSERV();
-
-/* 断开服务器 */
-int disconnSERV();
 
 #endif

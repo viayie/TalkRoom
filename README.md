@@ -1,2 +1,0 @@
-# talkroom
-Linux下基于epoll反应堆模型和线程池的即时聊天软件

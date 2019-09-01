@@ -1,2 +1,2 @@
-client:client.c sign.c wrap.c
-	gcc client.c sign.c wrap.c -o client -lcjson
+client:client.c sign.c wrap.c conn.c func.c
+	gcc client.c sign.c wrap.c conn.c func.c -o client -lcjson -pthread

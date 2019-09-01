@@ -1,5 +1,9 @@
 {
     "files.associations": {
-        "socket.h": "c"
+        "socket.h": "c",
+        "epoll.h": "c",
+        "wrap.h": "c",
+        "process.h": "c",
+        "mysql.h": "c"
     }
 }
